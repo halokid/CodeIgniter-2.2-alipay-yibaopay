@@ -1,5 +1,5 @@
 <?php
-class Order extends Ysd
+class Order extends CI_Controller
 {
 	public function __construct()
 	{
