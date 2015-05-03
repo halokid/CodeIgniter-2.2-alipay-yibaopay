@@ -80,7 +80,7 @@ class Order extends CI_Controller
                 $this->ali_pay($order);
             } else if ( $_POST['pay_type'] =='yibao' ) {
                 $this->yibao_pay($order);
-            }
+            } 
 
         }else{
             redirect();
@@ -192,8 +192,8 @@ class Order extends CI_Controller
         
         //支付宝返回支付成功和交易结束标志
         if( $result && ($input['trade_status'] == 'TRADE_FINISHED' || $input['trade_status'] == 'TRADE_SUCCESS' ) ){
-            $id = $input['out_trade_no'];
             
+            $id = $input['out_trade_no'];
             //验证成功则更新订单信息
             // ..........
             
@@ -449,7 +449,7 @@ class Order extends CI_Controller
                     //判断签名及结果（即时到帐）
                     //只有签名正确,retcode为0，trade_state为0才是支付成功
                     if($queryRes->isTenpaySign() && $queryRes->getParameter("retcode") == "0" && $resHandler->getParameter("trade_state") == "0") {
-                        log_result("即时到帐验签ID成功");
+                        // log_result("即时到帐验签ID成功");
                         //取结果参数做业务处理
                         $out_trade_no = $resHandler->getParameter("out_trade_no");
                         //财付通订单号
