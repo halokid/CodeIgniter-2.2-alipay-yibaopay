@@ -220,18 +220,20 @@ class Order extends CI_Controller
     * @param array $order
     * @return void
     **/
-    public function tenpay()
+    public function tenpay($order)
     {
         //加载财付通配置
         $this->config->load('tenpay', TRUE);
         require_once (APPPATH."third_party/tenpay/classes/RequestHandler.class.php");
 
         /* 获取提交的订单号 */
-        $out_trade_no = $_REQUEST["order_no"];
+        // $out_trade_no = $_REQUEST["order_no"];
+        $out_trade_no = $order['uuid'];
         /* 获取提交的商品名称 */
         $product_name = $_REQUEST["product_name"];
         /* 获取提交的商品价格 */
-        $order_price = $_REQUEST["order_price"];
+        // $order_price = $_REQUEST["order_price"];
+        $order_price = $order['amount'];
         /* 获取提交的备注信息 */
         $remarkexplain = $_REQUEST["remarkexplain"];
         /* 支付方式 */
